@@ -6,6 +6,7 @@ server.use(cors());
 server.use(json())
 
 const user = [];
+const tweet = [];
 
 server.post('/sign-up', (req, res) => {
     const signUp = req.body;
@@ -15,12 +16,10 @@ server.post('/sign-up', (req, res) => {
 })
 
 server.post('/tweets', (req, res) => {
-    const tweets = {
-        username: "bobesponja",
-        tweet: "eu amo o hub"
-    }
+    const tweets = req.body;
+    tweet.push(tweets);
 
-    res.send(tweets);
+    res.send('OK');
 })
 
 server.get('/tweets', (req, res) => {

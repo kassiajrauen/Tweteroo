@@ -7,6 +7,7 @@ server.use(json())
 
 const user = [];
 const tweet = [];
+const allTweets = [];
 
 server.post('/sign-up', (req, res) => {
     const signUp = req.body;
@@ -20,6 +21,21 @@ server.post('/tweets', (req, res) => {
     tweet.push(tweets);
 
     res.send('OK');
+
+    allTweets = [];
+
+    for(let i = 0; i < user.length; i++){
+        for(let j = 0; j < tweet.length; j++){
+            if(user[i].username === tweet[j].username){
+                post= {
+                    username: user[i].username,
+                    avatar: user[i].avatar,
+                    tweet: tweet[j].tweet,
+                }; 
+                allTweets.push(post);
+            }
+        }
+    }
 })
 
 server.get('/tweets', (req, res) => {

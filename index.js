@@ -10,7 +10,7 @@ const user = [];
 server.post('/sign-up', (req, res) => {
     const signUp = req.body;
     user.push(signUp);
-
+    
     res.send('OK');
 })
 
